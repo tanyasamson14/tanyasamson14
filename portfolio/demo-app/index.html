@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Patient Record (demo)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; color: #1d2733; }
+    h1 { margin-bottom: .25rem; }
+    .note { color: #5b6672; margin-top: 0; }
+    section { border: 1px solid #d5dbe1; border-radius: 6px; padding: 1rem; margin: 1rem 0; }
+    h2 { font-size: 1.1rem; margin: 0 0 .5rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: .4rem; border-bottom: 1px solid #e3e7eb; }
+    input, select { padding: .4rem; font-size: 1rem; }
+    label + label { margin-left: 1rem; }
+    ul#options { list-style: none; padding: 0; margin: .5rem 0; }
+    ul#options button { width: 100%; text-align: left; padding: .4rem; background: #f4f6f8; border: 1px solid #d5dbe1; margin-bottom: 2px; cursor: pointer; }
+    .status-active { color: #1a7f37; font-weight: 600; }
+    .status-expired { color: #8c959f; }
+    .status-scheduled { color: #9a6700; }
+    button.primary { padding: .5rem 1rem; background: #1f6feb; color: #fff; border: 0; border-radius: 6px; font-size: 1rem; }
+    button.primary:disabled { background: #9db5d9; }
+    #disclaimer { background: #fff8c5; border: 1px solid #d4a72c; padding: .5rem; border-radius: 6px; }
+    ul#directory { columns: 2; margin: 0 0 .75rem; padding-left: 1.2rem; }
+    #notes h3 { font-size: 1rem; margin: .75rem 0 .25rem; }
+    #notes ul, #notes p { margin: 0; }
+    #toast { position: fixed; bottom: 1rem; right: 1rem; background: #1a7f37; color: #fff; padding: .6rem 1rem; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1 id="patient-name" data-testid="patient-name">Patients</h1>
+  <p class="note">Fictional demo app for a test portfolio. Demo date: <span id="today"></span>.</p>
+
+  <ul id="patient-list" data-testid="patient-list" hidden></ul>
+
+  <div id="record" hidden>
+    <section>
+      <h2>Medications</h2>
+      <table>
+        <thead><tr><th>Medication</th><th>Start</th><th>End</th><th>Status</th><th></th></tr></thead>
+        <tbody id="medications"></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Prescribe</h2>
+      <p class="note">Medication directory: the drugs you can search for.</p>
+      <ul id="directory" data-testid="medication-directory"></ul>
+      <label>Medication <input id="search" data-testid="medication-search" autocomplete="off" placeholder="Search medications"></label>
+      <ul id="options"></ul>
+      <p>Selected: <strong data-testid="selected-medication" id="selected">none</strong></p>
+      <label>Course length (days, blank for long-term)
+        <input id="duration" data-testid="prescription-duration" type="number" min="1" step="1" style="width:6rem">
+      </label>
+      <p><button class="primary" id="prescribe" data-testid="prescribe" disabled>Prescribe</button></p>
+    </section>
+
+    <section>
+      <h2>Problems</h2>
+      <table>
+        <thead><tr><th>Problem</th><th>Status</th><th></th></tr></thead>
+        <tbody id="problems"></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>AI-generated notes</h2>
+      <p>
+        <label>Model version
+          <select id="model" data-testid="model-version">
+            <option value="v2">v2: release candidate</option>
+            <option value="v1">v1: known-bad, for testing</option>
+          </select>
+        </label>
+        <label>Run
+          <select id="run" data-testid="model-run">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+        </label>
+      </p>
+      <ul class="note" data-testid="model-help">
+        <li><b>v2, release candidate:</b> correct on every run. Only the order and wording change between runs, as with a real AI model.</li>
+        <li><b>v1, known-bad:</b> a deliberately broken version for testing. Runs 1 to 4 each carry one defect: a missing drug, an invented drug, an expired drug shown as active, and a wrong date. Run 5 is correct, to show a faulty model can still pass once.</li>
+      </ul>
+      <p><button class="primary" id="generate" data-testid="generate-notes">Generate notes</button></p>
+      <div id="notes-box" hidden>
+        <p id="disclaimer" data-testid="ai-disclaimer">AI-generated draft. Check it against the record before use.</p>
+        <div data-testid="ai-notes" id="notes">
+          <h3>Medications</h3>
+          <ul id="notes-medications" data-testid="notes-medications"></ul>
+          <h3>Problems</h3>
+          <ul id="notes-problems" data-testid="notes-problems"></ul>
+          <h3>Last seen</h3>
+          <p id="notes-last-seen" data-testid="notes-last-seen"></p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="toast" data-testid="toast" role="status" hidden></div>
+
+  <script type="module">
+    import { DEMO_TODAY } from '/medications.js';
+    const $ = (id) => document.getElementById(id);
+    const patientId = new URLSearchParams(location.search).get('patient');
+    let selected = null;
+    $('today').textContent = DEMO_TODAY;
+
+    const api = async (path, options = {}) => {
+      const res = await fetch(path, { headers: { 'content-type': 'application/json' }, ...options });
+      return res.json();
+    };
+
+    const toast = (text, isError = false) => {
+      $('toast').textContent = text;
+      $('toast').style.background = isError ? '#cf222e' : '';
+      $('toast').hidden = false;
+      setTimeout(() => ($('toast').hidden = true), 4000);
+    };
+
+    const cell = (text, attrs = {}) => {
+      const td = document.createElement('td');
+      td.textContent = text;
+      Object.assign(td.dataset, attrs);
+      return td;
+    };
+
+    const item = (text) => {
+      const li = document.createElement('li');
+      li.textContent = text;
+      return li;
+    };
+
+    const actionButton = (label, testid, onClick) => {
+      const td = document.createElement('td');
+      const btn = document.createElement('button');
+      btn.textContent = label;
+      btn.dataset.testid = testid;
+      btn.onclick = onClick;
+      td.append(btn);
+      return td;
+    };
+
+    function render(record) {
+      $('notes-box').hidden = true; // notes describe the record as it was; never show them once it changes
+      $('patient-name').textContent = `${record.name} (${record.species})`;
+      $('medications').replaceChildren(...record.medications.map((m, i) => {
+        const tr = document.createElement('tr');
+        tr.dataset.testid = 'medication-row';
+        const status = cell(m.status, { testid: 'medication-status' });
+        status.className = `status-${m.status}`;
+        tr.append(
+          cell(m.source === 'external clinic' ? `${m.name} (external)` : m.name),
+          cell(m.startDate),
+          cell(m.endDate ?? 'long-term', { testid: 'medication-end' }),
+          status,
+          m.status === 'expired' ? cell('') : actionButton('Stop', 'stop-medication', async () => {
+            render(await api(`/api/patients/${patientId}/medications/${i}/stop`, { method: 'POST' }));
+            toast(`${m.name} stopped`);
+          }),
+        );
+        return tr;
+      }));
+      $('problems').replaceChildren(...record.problems.map((p, i) => {
+        const tr = document.createElement('tr');
+        tr.dataset.testid = 'problem-row';
+        tr.append(
+          cell(p.name),
+          cell(p.status, { testid: 'problem-status' }),
+          p.status === 'resolved' ? cell('') : actionButton('Resolve', 'resolve-problem', async () => {
+            render(await api(`/api/patients/${patientId}/problems/${i}/resolve`, { method: 'POST' }));
+          }),
+        );
+        return tr;
+      }));
+    }
+
+    async function showList() {
+      const list = await api('/api/patients');
+      $('patient-list').replaceChildren(...list.map((p) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `/?patient=${p.id}`;
+        a.dataset.testid = `patient-link-${p.id}`;
+        a.textContent = `${p.name} (${p.species})`;
+        li.append(a);
+        return li;
+      }));
+      $('patient-list').hidden = false;
+    }
+
+    $('search').addEventListener('input', async (e) => {
+      const q = e.target.value.trim();
+      $('options').replaceChildren();
+      if (!q) return;
+      const matches = await api(`/api/medications?q=${encodeURIComponent(q)}`);
+      // Each keystroke sends a search. Only the answer for what is in the box now may draw the list.
+      if (q !== $('search').value.trim()) return;
+      $('options').replaceChildren();
+      for (const m of matches) {
+        const li = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.dataset.testid = `medication-option-${m.id}`;
+        btn.textContent = m.name;
+        btn.onclick = () => {
+          selected = m;
+          $('selected').textContent = m.name;
+          $('options').replaceChildren();
+          $('prescribe').disabled = false;
+        };
+        li.append(btn);
+        $('options').append(li);
+      }
+    });
+
+    $('prescribe').addEventListener('click', async () => {
+      $('prescribe').disabled = true;
+      const days = $('duration').value;
+      const record = await api(`/api/patients/${patientId}/medications`, {
+        method: 'POST',
+        body: JSON.stringify({ medicationId: selected.id, durationDays: days ? Number(days) : null }),
+      });
+      if (record.error) {
+        toast(`Not prescribed: ${record.error}`, true);
+        $('prescribe').disabled = false;
+        return;
+      }
+      render(record);
+      toast(`${selected.name} prescribed`);
+      selected = null;
+      $('selected').textContent = 'none';
+      $('search').value = '';
+      $('duration').value = '';
+    });
+
+    $('generate').addEventListener('click', async () => {
+      $('notes-box').hidden = true;
+      const { sections } = await api(`/api/patients/${patientId}/notes?model=${$('model').value}&seed=${$('run').value}`);
+      const external = (m) => (m.source === 'external clinic' ? ', from an external clinic' : '');
+      $('notes-medications').replaceChildren(...(sections.medications.length
+        ? sections.medications.map((m) => item(`${m.name} (${m.status}${external(m)})`))
+        : [item('None recorded')]));
+      $('notes-problems').replaceChildren(...sections.problems.map((p) => item(`${p.name} (${p.status})`)));
+      $('notes-last-seen').textContent = sections.lastVisit;
+      $('notes-box').hidden = false;
+    });
+
+    if (patientId) {
+      const record = await api(`/api/patients/${patientId}`);
+      if (record.error) {
+        $('patient-name').textContent = 'Patient not found';
+        showList();
+      } else {
+        $('record').hidden = false;
+        render(record);
+      }
+      $('directory').replaceChildren(...(await api('/api/medications')).map((m) => item(m.name)));
+    } else {
+      showList();
+    }
+  </script>
+</body>
+</html>

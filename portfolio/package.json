@@ -1,0 +1,17 @@
+{
+  "name": "tanya-samson-qa-portfolio",
+  "private": true,
+  "type": "module",
+  "description": "Runnable QA portfolio: Playwright E2E, API and AI-output accuracy tests against a fictional patient record app",
+  "scripts": {
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "node --test tests/unit/*.test.js",
+    "test:e2e": "playwright test",
+    "test:ai": "playwright test tests/ai",
+    "demo": "node demo-app/server.js"
+  },
+  "engines": { "node": ">=20" },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "bella": {
+    "name": "Bella",
+    "species": "Dog",
+    "lastVisit": "2026-09-14",
+    "medications": [
+      { "name": "Carprofen 75mg tablet", "startDate": "2026-09-14", "endDate": null, "source": "this clinic" },
+      { "name": "Amoxicillin 250mg tablet", "startDate": "2026-07-20", "endDate": "2026-07-29", "source": "this clinic" }
+    ],
+    "problems": [
+      { "name": "Osteoarthritis", "status": "active" },
+      { "name": "Otitis externa", "status": "resolved" }
+    ]
+  },
+  "milo": {
+    "name": "Milo",
+    "species": "Cat",
+    "lastVisit": "2026-10-02",
+    "medications": [
+      { "name": "Methimazole 2.5mg tablet", "startDate": "2026-10-02", "endDate": null, "source": "this clinic" }
+    ],
+    "problems": [
+      { "name": "Hyperthyroidism", "status": "active" }
+    ]
+  },
+  "pepper": {
+    "name": "Pepper",
+    "species": "Rabbit",
+    "lastVisit": "2026-07-21",
+    "medications": [
+      { "name": "Meloxicam 0.5mg/ml oral suspension", "startDate": "2026-07-21", "endDate": "2026-11-17", "source": "external clinic" }
+    ],
+    "problems": [
+      { "name": "Dental overgrowth", "status": "active" }
+    ]
+  }
+}
