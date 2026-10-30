@@ -1,6 +1,4 @@
 
-### Quality Engineering | Business Analysis | AI Test Automation | Generative AI Testing & Output Evaluation | AI-Powered Skills & Plugin Development | Product Management Experience
-
 ## Professional Profile 🏢
 
 I'm looking for a role that brings quality engineering, business analysis and product management experience together, with a strong focus on AI quality, generative AI testing and test automation. My experience includes evaluating AI-generated outputs, building automated tests, and using AI to develop skills, plugins and automation solutions that improve quality and efficiency. This page showcases what I've delivered, the capabilities I'm developing, and how I approach solving problems through quality, collaboration and continuous improvement.
