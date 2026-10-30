@@ -1,31 +1,11 @@
 
-### Quality Engineering, Business Analysis, AI Quality & Generative AI Testing, Test Automation, Product Management Experience, AI-Powered Skills & Plugin Development
+### Quality Engineering | Business Analysis | AI Test Automation | Generative AI Testing & Output Evaluation | AI-Powered Skills & Plugin Development | Product Management Experience
 
+## Professional Profile 🏢
 
-## About Me
-
-```typescript
-const whoAmI = {
-  name: 'Tanya Samson',
-  basedIn: 'Auckland, New Zealand',
-  experience: '10+ years in software: testing, test leadership, analysis and delivery',
-  focus: ['AI output testing', 'Test automation', 'Business analysis - requirements traceability and definition of acceptance criteria', 'Release decisions'],
-  openTo: [
-    'Senior QA / Quality Coach',
-    'Business Analyst',
-    'Product Manager',
-    'Scrum Master',
-  ],
-};
-```
+I'm looking for a role that brings quality engineering, business analysis and product management experience together, with a strong focus on AI quality, generative AI testing and test automation. My experience includes evaluating AI-generated outputs, building automated tests, and using AI to develop skills, plugins and automation solutions that improve quality and efficiency. This page showcases what I've delivered, the capabilities I'm developing, and how I approach solving problems through quality, collaboration and continuous improvement.
 
 [![LinkedIn](https://img.shields.io/badge/-Tanya_Samson-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/tanyasamson14/) [![Email](https://img.shields.io/badge/-tanyasharon14@gmail.com-c14438?style=flat-square&logo=gmail&logoColor=white)](mailto:tanyasharon14@gmail.com)
-
-## Why I'm Here 🏢
-
-I'm looking for a role that brings quality coaching, business analysis and product judgement together. My
-exposure also includes testing AI features, where getting the answer right really matters. This page shows what
-I've delivered and how I work.
 
 ## 📂 Portfolio
 
