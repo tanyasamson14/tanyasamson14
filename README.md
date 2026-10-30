@@ -1,6 +1,6 @@
 # Hi, I'm Tanya 👋
 
-### Quality Engineering · AI Output Testing · Business Analysis · Product
+### Quality Engineering · AI Output Testing · Business Analysis · Product advocate
 
 <h3>"Quality is everyone's job, from the first question in refinement to the last check before release."</h3>
 
@@ -150,8 +150,11 @@ monthly quality reporting, stakeholder management
 ## Education & Award 🎓
 
 MBA (HR Management), University of Madras, 2019 
+
 B.E. Electronics & Communication, Anna University, 2015 
+
 Cambridge Business English Certificate, 2013 
+
 Expert360 Annual Ka Pai Award, 2023
 
 ## Other Stuff
