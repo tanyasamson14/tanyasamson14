@@ -9,7 +9,7 @@ I'm looking for a role that brings quality engineering, business analysis and pr
 
 ## 📂 Portfolio
 
-**[Portfolio →](https://github.com/tanyasamson14/portfolio)** AI output testing method and runnable accuracy
+**[Portfolio →](https://github.com/tanyasamson14/portfolio)** Generative AI Testing & Output Evaluation for accuracy
 checks, go/no-go and acceptance-criteria templates, Jira dashboard design, merged-work write-ups, and Playwright
 tests you can run in five minutes.
 
