@@ -20,7 +20,7 @@ tests you can run in five minutes.
 
 **At a glance:** 49 merged changes. 274 tests added to the merge gate. 112 genuine bugs raised, 94 resolved.
 
-### 🩺 AI Output Testing in a Medical Setting
+### 🩺 Generative AI Testing in a Medical Setting
 **Problem:** The same prompt and patient record can give a different AI-generated note every time. In a clinic,
 a missed medication or an invented one is a safety issue, and both look plausible to a busy vet.
 
@@ -106,8 +106,8 @@ starters. Wrote 51 process, workflow and test documents, and a handover pack.
 
 ## Skills 💻
 
-**AI quality:** Testing AI output for accuracy, omissions, hallucinations and consistency; prompt and input
-variation; API assertions; comparing models and LLM providers
+**AI quality:** Generative AI Testing for accuracy, omissions, hallucinations and consistency; prompt and input
+variation; API assertions; comparing models and LLMs
 
 **Product and analysis:** Go/no-go and pilot sign-off, requirements, user stories, Given/When/Then acceptance
 criteria, workflow diagrams, customer insight
