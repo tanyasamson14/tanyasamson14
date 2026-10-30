@@ -1,7 +1,6 @@
 
-### Quality Engineering | Business Analysis | AI Quality & Generative AI Testing | Test Automation | Product Management Experience | AI-Powered Skills & Plugin Development
+### Quality Engineering . Business Analysis | AI Quality & Generative AI Testing | Test Automation | Product Management Experience | AI-Powered Skills & Plugin Development
 
-<h3>"Quality is everyone's job, from the first question in refinement to the last check before release."</h3>
 
 ## About Me
 
