@@ -11,7 +11,7 @@ const whoAmI = {
   name: 'Tanya Samson',
   basedIn: 'Auckland, New Zealand',
   experience: '10+ years in software: testing, test leadership, analysis and delivery',
-  focus: ['AI output testing', 'Test automation', 'Requirements and acceptance criteria', 'Release decisions'],
+  focus: ['AI output testing', 'Test automation', 'Business analysis - requirements traceability and definition of acceptance criteria', 'Release decisions'],
   openTo: [
     'Senior QA / Quality Coach',
     'Business Analyst',
@@ -149,8 +149,10 @@ monthly quality reporting, stakeholder management
 
 ## Education & Award 🎓
 
-MBA (HR Management), University of Madras, 2019 · B.E. Electronics & Communication, Anna University, 2015 ·
-Cambridge Business English Certificate, 2013 · Expert360 Annual Ka Pai Award, 2023
+MBA (HR Management), University of Madras, 2019 
+B.E. Electronics & Communication, Anna University, 2015 
+Cambridge Business English Certificate, 2013 
+Expert360 Annual Ka Pai Award, 2023
 
 ## Other Stuff
 
