@@ -1,5 +1,6 @@
 
-# Hi, I'm Tanya 👋<br>### Quality Engineering · Generative AI Testing · Business Analysis · Product
+# Hi, I'm Tanya 👋
+### Quality Engineering · Generative AI Testing · Business Analysis · Product
 
 ## Professional Profile 🏢
 
