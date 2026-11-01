@@ -107,7 +107,7 @@ starters. Wrote 51 process, workflow and test documents, and a handover pack.
 ## Skills 💻
 
 **AI quality:** Generative AI testing for accuracy, omissions, hallucinations and consistency; prompt and input
-variation; API assertions; comparing models and LLM providers.
+variation; API assertions; comparing models and LLM providers
 
 **Product and analysis:** Go/no-go and pilot sign-off, requirements, user stories, Given/When/Then acceptance
 criteria, workflow diagrams, customer insight
