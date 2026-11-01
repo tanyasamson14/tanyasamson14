@@ -9,7 +9,8 @@ I'm looking for a role that brings quality engineering, business analysis and pr
 
 ## 📂 Portfolio
 
-**[Portfolio →](https://github.com/tanyasamson14/portfolio)**Generative AI testing and output evaluation:** accuracy checks, go/no-go and acceptance-criteria templates, Jira dashboard design, merged-work write-ups, and Playwright tests you can run in five minutes.
+
+**[Portfolio →](https://github.com/tanyasamson14/portfolio)** **Generative AI testing and output evaluation:** accuracy checks, go/no-go and acceptance-criteria templates, Jira dashboard design, merged-work write-ups, and Playwright tests you can run in five minutes.
 
 ## Featured Work 🚀
 
@@ -105,7 +106,7 @@ starters. Wrote 51 process, workflow and test documents, and a handover pack.
 ## Skills 💻
 
 **AI quality:** Generative AI testing for accuracy, omissions, hallucinations and consistency; prompt and input
-variation; API assertions; comparing models and LLMs providers.
+variation; API assertions; comparing models and LLM providers.
 
 **Product and analysis:** Go/no-go and pilot sign-off, requirements, user stories, Given/When/Then acceptance
 criteria, workflow diagrams, customer insight
