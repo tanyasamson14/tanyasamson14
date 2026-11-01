@@ -1,4 +1,6 @@
 
+# Hi, I'm Tanya 👋<br>### Quality Engineering · Generative AI Testing · Business Analysis · Product
+
 ## Professional Profile 🏢
 
 I'm looking for a role that brings quality engineering, business analysis and product management experience together, with a strong focus on AI quality, generative AI testing and test automation. My experience includes evaluating AI-generated outputs, building automated tests, and using AI to develop skills, plugins and automation solutions that improve quality and efficiency. This page showcases what I've delivered, the capabilities I'm developing, and how I approach solving problems through quality, collaboration and continuous improvement.
@@ -7,9 +9,7 @@ I'm looking for a role that brings quality engineering, business analysis and pr
 
 ## 📂 Portfolio
 
-**[Portfolio →](https://github.com/tanyasamson14/portfolio)** Generative AI Testing & Output Evaluation for accuracy
-checks, go/no-go and acceptance-criteria templates, Jira dashboard design, merged-work write-ups, and Playwright
-tests you can run in five minutes.
+**[Portfolio →](https://github.com/tanyasamson14/portfolio)**Generative AI testing and output evaluation:** accuracy checks, go/no-go and acceptance-criteria templates, Jira dashboard design, merged-work write-ups, and Playwright tests you can run in five minutes.
 
 ## Featured Work 🚀
 
@@ -104,8 +104,8 @@ starters. Wrote 51 process, workflow and test documents, and a handover pack.
 
 ## Skills 💻
 
-**AI quality:** Generative AI Testing for accuracy, omissions, hallucinations and consistency; prompt and input
-variation; API assertions; comparing models and LLMs
+**AI quality:** Generative AI testing for accuracy, omissions, hallucinations and consistency; prompt and input
+variation; API assertions; comparing models and LLMs providers.
 
 **Product and analysis:** Go/no-go and pilot sign-off, requirements, user stories, Given/When/Then acceptance
 criteria, workflow diagrams, customer insight
@@ -126,13 +126,7 @@ monthly quality reporting, stakeholder management
 ## Education & Award 🎓
 
 - MBA (HR Management), University of Madras, 2019 
-
 - B.E. Electronics & Communication, Anna University, 2015 
-
 - Cambridge Business English Certificate, 2013 
-
 - Expert360 Annual Ka Pai Award, 2023
 
-## Other Stuff
-
-![Tanya's GitHub stats](https://github-readme-stats.vercel.app/api?username=tanyasamson14&show_icons=true&hide=[%22issues%22])
